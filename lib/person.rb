@@ -1,4 +1,4 @@
-
+require 'pry'
 class Person
 
 attr_reader :name,  :happiness, :hygiene
@@ -45,11 +45,45 @@ attr_accessor :bank_account
   end 
   
   def take_bath
-    @hygiene += 4
+    self.hygiene += 4
     "♪ Rub-a-dub just relaxing in the tub ♫"
+   
   end
 
+  def work_out
+    self.happiness += 2
+    self.hygiene -= 3
+    # self.happiness=(@happiness)
+    # self.hygiene=(@hygiene)
+    "♪ another one bites the dust ♫"
+  end
+
+  def call_friend(friend)
+    self.happiness += 3
+    friend.happiness += 3
+    # self.happiness=(@happiness)
+    # friend.happiness=(friend.happiness)
+     "Hi #{friend.name}! It's #{self.name}. How are you?"
+     
+  end
+
+  def start_conversation(person,topic)
+    if topic == "politics"
+      self.happiness -= 2
+      person.happiness -= 2
+      "blah blah partisan blah lobbyist"
+    elsif topic == "weather"
+      self.happiness += 1
+      person.happiness += 1
+      "blah blah sun blah rain"
+    else
+      "blah blah blah blah blah"
+    end
+  end
+  
 end
 
 john = Person.new("John")
+#doug = Person.new("Doug")
+john.take_bath
 puts john.clean?
